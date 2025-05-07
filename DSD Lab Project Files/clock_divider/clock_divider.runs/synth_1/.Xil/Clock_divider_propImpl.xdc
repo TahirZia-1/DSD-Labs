@@ -1,0 +1,5 @@
+set_property SRC_FILE_INFO {cfile:{D:/Vivado Lab projects/clock_divider/clock_divider.srcs/constrs_1/new/clock_divider_xdc.xdc} rfile:../../../clock_divider.srcs/constrs_1/new/clock_divider_xdc.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN E3 [get_ports clock_in]
+set_property src_info {type:XDC file:1 line:4 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN V11 [get_ports clock_out]

@@ -1,0 +1,7 @@
+Running: xsim.dir/Up_Counter_4bit_tb_behav/xsimk.exe -simmode gui -wdb Up_Counter_4bit_tb_behav.wdb -simrunnum 0 -socket 55241
+Design successfully loaded
+Design Loading Memory Usage: 7324 KB (Peak: 7324 KB)
+Design Loading CPU Usage: 0 ms
+Simulation completed
+Simulation Memory Usage: 8048 KB (Peak: 8048 KB)
+Simulation CPU Usage: 0 ms

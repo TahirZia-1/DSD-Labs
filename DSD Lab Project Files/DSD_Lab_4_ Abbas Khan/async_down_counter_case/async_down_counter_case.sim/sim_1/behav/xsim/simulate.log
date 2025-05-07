@@ -1,0 +1,25 @@
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+Time=0 | Count=1111
+Time=15000 | Count=1110
+Time=25000 | Count=1101
+Time=35000 | Count=1100
+Time=45000 | Count=1011
+Time=55000 | Count=1010
+Time=65000 | Count=1001
+Time=75000 | Count=1000
+Time=85000 | Count=0111
+Time=95000 | Count=0110
+Time=105000 | Count=0101
+Time=115000 | Count=0100
+Time=125000 | Count=0011
+Time=135000 | Count=0010
+Time=145000 | Count=0001
+Time=155000 | Count=0000
+Time=165000 | Count=1111
+Time=185000 | Count=1110
+Time=195000 | Count=1101
+Time=205000 | Count=1100
+Time=215000 | Count=1011
+Time=225000 | Count=1010
+$finish called at time : 230 ns : File "C:/Users/PC-28/Desktop/Abbas Khan/async_down_counter_case/async_down_counter_case.srcs/sim_1/new/async_down_counter_tb.sv" Line 48

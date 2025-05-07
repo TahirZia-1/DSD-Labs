@@ -1,0 +1,15 @@
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+Time=0 | J=0 K=0 | Q=0 Q_bar=1
+Time=30000 | J=0 K=1 | Q=0 Q_bar=1
+Time=40000 | J=1 K=0 | Q=0 Q_bar=1
+Time=45000 | J=1 K=0 | Q=1 Q_bar=0
+Time=50000 | J=1 K=1 | Q=1 Q_bar=0
+Time=55000 | J=1 K=1 | Q=0 Q_bar=1
+Time=60000 | J=0 K=0 | Q=0 Q_bar=1
+Time=70000 | J=1 K=1 | Q=0 Q_bar=1
+Time=75000 | J=1 K=1 | Q=1 Q_bar=0
+Time=80000 | J=1 K=1 | Q=0 Q_bar=1
+Time=90000 | J=1 K=0 | Q=0 Q_bar=1
+Time=95000 | J=1 K=0 | Q=1 Q_bar=0
+$finish called at time : 110 ns : File "C:/Users/PC-28/Desktop/Abbas Khan/JK-FF/JK-FF.srcs/sim_1/new/JK_FF_tb.sv" Line 55

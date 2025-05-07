@@ -1,0 +1,18 @@
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+Time=0 | Serial_In=0 | Parallel_Out=0000
+Time=20000 | Serial_In=1 | Parallel_Out=0000
+Time=25000 | Serial_In=1 | Parallel_Out=0001
+Time=30000 | Serial_In=0 | Parallel_Out=0001
+Time=35000 | Serial_In=0 | Parallel_Out=0010
+Time=40000 | Serial_In=1 | Parallel_Out=0010
+Time=45000 | Serial_In=1 | Parallel_Out=0101
+Time=55000 | Serial_In=1 | Parallel_Out=1011
+Time=60000 | Serial_In=0 | Parallel_Out=1011
+Time=65000 | Serial_In=0 | Parallel_Out=0110
+Time=70000 | Serial_In=1 | Parallel_Out=0110
+Time=75000 | Serial_In=1 | Parallel_Out=1101
+Time=85000 | Serial_In=1 | Parallel_Out=1011
+Time=95000 | Serial_In=1 | Parallel_Out=0111
+Time=105000 | Serial_In=1 | Parallel_Out=1111
+$finish called at time : 120 ns : File "C:/Users/PC-28/Desktop/Abbas Khan/SIPO_Register/SIPO_Register.srcs/sim_1/new/SIPO_Register_tb.sv" Line 54

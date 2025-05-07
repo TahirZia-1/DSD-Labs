@@ -1,0 +1,151 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 03/05/2025 03:20:31 PM
+// Design Name: 
+// Module Name: clock_2
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module clock_2(
+    input clk,                // Main clock signal
+    input reset,              // Reset signal
+    output reg [6:0] ssd,     // Seven-segment display output
+    output reg [7:0] anode    // Anode output for multiplexing
+);
+
+    reg [25:0] count;         // Counter for generating 1Hz clock
+    reg clk_1hz;              // 1Hz clock signal
+    reg [3:0] sec_lss;        // Least significant second digit
+    reg [3:0] sec_mss;        // Most significant second digit
+    reg [3:0] min_lss;        // Least significant minute digit
+    reg [3:0] min_mss;        // Most significant minute digit
+    reg [3:0] hr_lss;         // Least significant hour digit
+    reg [3:0] hr_mss;         // Most significant hour digit
+    reg [19:0] seg_count;     // Counter for segment multiplexing
+    reg [3:0] number;         // Digit to be displayed
+
+    // Generate 1Hz clock from 100MHz clock
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            count <= 0;
+            clk_1hz <= 0;
+        end else if (count == 50_000_000) begin
+            clk_1hz <= ~clk_1hz;
+            count <= 0;
+        end else begin
+            count <= count + 1;
+        end
+    end
+
+    // Clock logic for seconds, minutes, and hours
+    always @(posedge clk_1hz or posedge reset) begin
+        if (reset) begin
+            sec_lss <= 0;
+            sec_mss <= 0;
+            min_lss <= 0;
+            min_mss <= 0;
+            hr_lss <= 0;
+            hr_mss <= 0;
+        end else begin
+            if (sec_lss == 9) begin
+                sec_lss <= 0;
+                if (sec_mss == 5) begin
+                    sec_mss <= 0;
+                    if (min_lss == 9) begin
+                        min_lss <= 0;
+                        if (min_mss == 5) begin
+                            min_mss <= 0;
+                            if (hr_lss == 3 && hr_mss == 2) begin
+                                hr_lss <= 0;
+                                hr_mss <= 0;
+                            end else if (hr_lss == 9) begin
+                                hr_lss <= 0;
+                                hr_mss <= hr_mss + 1;
+                            end else begin
+                                hr_lss <= hr_lss + 1;
+                            end
+                        end else begin
+                            min_mss <= min_mss + 1;
+                        end
+                    end else begin
+                        min_lss <= min_lss + 1;
+                    end
+                end else begin
+                    sec_mss <= sec_mss + 1;
+                end
+            end else begin
+                sec_lss <= sec_lss + 1;
+            end
+        end
+    end
+
+    // Multiplexing logic for seven-segment display
+    always @(posedge clk) begin
+        seg_count <= seg_count + 1;
+    end
+
+    always @(*) begin
+        case (seg_count[19:17])
+            3'd0: begin
+                number = sec_lss;  // Display least significant second digit
+                anode = 8'b11111110;
+            end
+            3'd1: begin
+                number = sec_mss;  // Display most significant second digit
+                anode = 8'b11111101;
+            end
+            3'd2: begin
+                number = min_lss;  // Display least significant minute digit
+                anode = 8'b11111011;
+            end
+            3'd3: begin
+                number = min_mss;  // Display most significant minute digit
+                anode = 8'b11110111;
+            end
+            3'd4: begin
+                number = hr_lss;   // Display least significant hour digit
+                anode = 8'b11101111;
+            end
+            3'd5: begin
+                number = hr_mss;   // Display most significant hour digit
+                anode = 8'b11011111;
+            end
+            default: begin
+                number = 4'b1111;  // Turn off all segments
+                anode = 8'b11111111;
+            end
+        endcase
+    end
+
+    // Seven-segment display encoding
+    always @(*) begin
+        case (number)
+            4'd0: ssd = 7'b1000000; // 0
+            4'd1: ssd = 7'b1111001; // 1
+            4'd2: ssd = 7'b0100100; // 2
+            4'd3: ssd = 7'b0110000; // 3
+            4'd4: ssd = 7'b0011001; // 4
+            4'd5: ssd = 7'b0010010; // 5
+            4'd6: ssd = 7'b0000010; // 6
+            4'd7: ssd = 7'b1111000; // 7
+            4'd8: ssd = 7'b0000000; // 8
+            4'd9: ssd = 7'b0010000; // 9
+            default: ssd = 7'b1111111; // Turn off all segments
+        endcase
+    end
+
+endmodule

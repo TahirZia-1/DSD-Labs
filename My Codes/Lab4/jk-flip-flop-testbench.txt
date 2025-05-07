@@ -1,0 +1,67 @@
+module jk_ff_tb;
+    // Testbench signals
+    logic clk;
+    logic rst;
+    logic j;
+    logic k;
+    logic q;
+    logic q_bar;
+
+    // Instantiate the DUT (Device Under Test)
+    jk_ff dut (
+        .clk(clk),
+        .rst(rst),
+        .j(j),
+        .k(k),
+        .q(q),
+        .q_bar(q_bar)
+    );
+
+    // Clock generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10ns clock period
+    end
+
+    // Test sequence
+    initial begin
+        // Initialize signals
+        rst = 1;
+        j = 0;
+        k = 0;
+        
+        // Release reset
+        #10 rst = 0;
+        
+        // Test case 1: No change (J=0, K=0)
+        #10 j = 0; k = 0;
+        
+        // Test case 2: Reset (J=0, K=1)
+        #10 j = 0; k = 1;
+        
+        // Test case 3: Set (J=1, K=0)
+        #10 j = 1; k = 0;
+        
+        // Test case 4: No change (J=0, K=0)
+        #10 j = 0; k = 0;
+        
+        // Test case 5: Toggle (J=1, K=1)
+        #10 j = 1; k = 1;
+        
+        // Test case 6: Toggle again (J=1, K=1)
+        #10 j = 1; k = 1;
+        
+        // Test reset functionality
+        #10 rst = 1;
+        #10 rst = 0;
+        
+        // Run a bit longer and finish
+        #20 $finish;
+    end
+
+    // Monitor outputs
+    initial begin
+        $monitor("Time=%0t: J=%b K=%b RST=%b Q=%b Q_BAR=%b", 
+                 $time, j, k, rst, q, q_bar);
+    end
+endmodule

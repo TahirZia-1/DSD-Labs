@@ -1,0 +1,59 @@
+module sipo_shift_register_tb;
+    // Testbench signals
+    logic clk;
+    logic rst;
+    logic serial_in;
+    logic [3:0] q;
+
+    // Instantiate the DUT
+    sipo_shift_register dut (
+        .clk(clk),
+        .rst(rst),
+        .serial_in(serial_in),
+        .q(q)
+    );
+
+    // Clock generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10ns clock period
+    end
+
+    // Test sequence
+    initial begin
+        // Initialize with reset
+        rst = 1;
+        serial_in = 0;
+        #10 rst = 0;
+        
+        // Load pattern 1010
+        #10 serial_in = 1; // Shift in 1
+        #10 serial_in = 0; // Shift in 0
+        #10 serial_in = 1; // Shift in 1
+        #10 serial_in = 0; // Shift in 0
+        
+        // Load different pattern 1100
+        #10 serial_in = 1; // Shift in 1
+        #10 serial_in = 1; // Shift in 1
+        #10 serial_in = 0; // Shift in 0
+        #10 serial_in = 0; // Shift in 0
+        
+        // Test reset in the middle of operation
+        #10 rst = 1;
+        #10 rst = 0;
+        
+        // Load pattern 0101
+        #10 serial_in = 0; // Shift in 0
+        #10 serial_in = 1; // Shift in 1
+        #10 serial_in = 0; // Shift in 0
+        #10 serial_in = 1; // Shift in 1
+        
+        #10 $finish;
+    end
+
+    // Monitor outputs
+    initial begin
+        $monitor("Time=%0t: RST=%b SERIAL_IN=%b Q=%b", 
+                 $time, rst, serial_in, q);
+    end
+endmodule

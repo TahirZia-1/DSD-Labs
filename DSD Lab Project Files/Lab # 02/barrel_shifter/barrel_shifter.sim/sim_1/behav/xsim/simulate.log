@@ -1,0 +1,8 @@
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+Time=0 | data_in=10101010 | shift_amt=0 | dir=0 | data_out=10101010
+Time=10000 | data_in=10101010 | shift_amt=1 | dir=0 | data_out=01010100
+Time=20000 | data_in=10101010 | shift_amt=2 | dir=0 | data_out=10101000
+Time=30000 | data_in=10101010 | shift_amt=3 | dir=1 | data_out=00010101
+Time=40000 | data_in=10101010 | shift_amt=4 | dir=1 | data_out=00001010
+Time=50000 | data_in=10101010 | shift_amt=5 | dir=1 | data_out=00000101

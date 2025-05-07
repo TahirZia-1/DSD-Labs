@@ -1,0 +1,17 @@
+module sipo_shift_register (
+    input logic clk,
+    input logic rst,
+    input logic serial_in,
+    output logic [3:0] q
+);
+
+    always_ff @(posedge clk or posedge rst) begin
+        if (rst) begin
+            q <= 4'b0000;  // Reset all bits to 0
+        end else begin
+            // Shift operation: shift left and insert serial_in at LSB
+            q <= {q[2:0], serial_in};
+        end
+    end
+
+endmodule

@@ -1,0 +1,21 @@
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+Time=0 | Sync_Count=xxxx
+Time=5000 | Sync_Count=0000
+Time=15000 | Sync_Count=0001
+Time=25000 | Sync_Count=0010
+Time=35000 | Sync_Count=0011
+Time=45000 | Sync_Count=0100
+Time=55000 | Sync_Count=0101
+Time=65000 | Sync_Count=0110
+Time=75000 | Sync_Count=0111
+Time=85000 | Sync_Count=1000
+Time=95000 | Sync_Count=1001
+Time=105000 | Sync_Count=1010
+Time=115000 | Sync_Count=0000
+Time=125000 | Sync_Count=0001
+Time=135000 | Sync_Count=0010
+Time=145000 | Sync_Count=0011
+Time=155000 | Sync_Count=0100
+Time=165000 | Sync_Count=0101
+$finish called at time : 170 ns : File "C:/Users/PC-28/Desktop/Abbas Khan/Up_Counter_4bit/Up_Counter_4bit.srcs/sim_1/new/Up_Counter_4bit_tb.sv" Line 47

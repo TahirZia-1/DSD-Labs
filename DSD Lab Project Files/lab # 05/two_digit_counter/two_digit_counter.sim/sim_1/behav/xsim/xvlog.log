@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Vivado Lab projects/two_digit_counter/two_digit_counter.srcs/sources_1/new/zero_99.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module zero_99
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Vivado Lab projects/two_digit_counter/two_digit_counter.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

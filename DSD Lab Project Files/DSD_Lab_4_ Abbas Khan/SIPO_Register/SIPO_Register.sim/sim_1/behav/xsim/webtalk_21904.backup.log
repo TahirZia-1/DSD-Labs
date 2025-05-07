@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Webtalk v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Mon Feb 17 15:51:51 2025
+# Process ID: 21904
+# Current directory: C:/Users/PC-28/Desktop/Abbas Khan/SIPO_Register/SIPO_Register.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Users/PC-28/Desktop/Abbas Khan/SIPO_Register/SIPO_Register.sim/sim_1/behav/xsim/xsim.dir/tb_sipo_shift_register_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/PC-28/Desktop/Abbas Khan/SIPO_Register/SIPO_Register.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: C:/Users/PC-28/Desktop/Abbas Khan/SIPO_Register/SIPO_Register.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/PC-28/Desktop/Abbas -notrace
+couldn't read file "C:/Users/PC-28/Desktop/Abbas": permission denied
+INFO: [Common 17-206] Exiting Webtalk at Mon Feb 17 15:51:51 2025...

@@ -1,0 +1,42 @@
+module sync_up_counter_tb;
+    // Testbench signals
+    logic clk;
+    logic rst;
+    logic [3:0] q;
+
+    // Instantiate the DUT
+    sync_up_counter dut (
+        .clk(clk),
+        .rst(rst),
+        .q(q)
+    );
+
+    // Clock generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10ns clock period
+    end
+
+    // Test sequence
+    initial begin
+        // Initialize with reset
+        rst = 1;
+        #20 rst = 0;
+        
+        // Let it count through all 16 states (0-15) and overflow
+        #170;
+        
+        // Apply reset in the middle of counting
+        rst = 1;
+        #10 rst = 0;
+        
+        // Run for a few more cycles
+        #50 $finish;
+    end
+
+    // Monitor outputs
+    initial begin
+        $monitor("Time=%0t: RST=%b Q=%b (Decimal: %0d)", 
+                 $time, rst, q, q);
+    end
+endmodule
