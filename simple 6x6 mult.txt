@@ -1,0 +1,48 @@
+module some (
+    input [5:0] A, B,
+    output [11:0] P
+);
+    wire [11:0] pp [5:0]; // 6 pp[i] of 12 bit wire
+
+    assign pp[0] = A[0] ? {6'b0, B} : 12'b0;
+    assign pp[1] = A[1] ? {5'b0, B, 1'b0} : 12'b0;
+    assign pp[2] = A[2] ? {4'b0, B, 2'b0} : 12'b0;
+    assign pp[3] = A[3] ? {3'b0, B, 3'b0} : 12'b0;
+    assign pp[4] = A[4] ? {2'b0, B, 4'b0} : 12'b0;
+    assign pp[5] = A[5] ? {1'b0, B, 5'b0} : 12'b0;
+
+    assign P = pp[0] + pp[1] + pp[2] + pp[3] + pp[4] + pp[5];
+endmodule
+
+`timescale 1ns / 1ps
+
+module tb_some;
+    // Inputs
+    reg [5:0] A, B;
+
+    // Output
+    wire [11:0] P;
+
+    // Instantiate the module under test
+    some uut (
+        .A(A),
+        .B(B),
+        .P(P)
+    );
+
+    initial begin
+        // Display header
+        $display("Time\tA\tB\tP (A*B)");
+        $monitor("%0dns\t%d\t%d\t%d", $time, A, B, P);
+
+        // Test cases
+        A = 6'd0;  B = 6'd0;  #10;
+        A = 6'd5;  B = 6'd3;  #10;
+        A = 6'd15; B = 6'd4;  #10;
+        A = 6'd32; B = 6'd2;  #10;
+        A = 6'd63; B = 6'd63; #10;
+        A = 6'd20; B = 6'd10; #10;
+
+        $finish;
+    end
+endmodule
